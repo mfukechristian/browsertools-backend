@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/dbConfig.js";
+import peopleRoutes from "./routes/peopleRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -16,5 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
+
+app.use("/api/people", peopleRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
