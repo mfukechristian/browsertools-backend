@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/dbConfig.js";
 import peopleRoutes from "./routes/peopleRoutes.js";
+import peopleCategoryRoutes from "./routes/peopleCategoryRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -19,5 +20,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/people", peopleRoutes);
+app.use("/api/categories", peopleCategoryRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -14,6 +14,14 @@ const createPeople = asyncHandler(async (req, res) => {
     );
   }
 
+  // **Check if a person with the same name and URL already exists**
+  const existingPerson = await People.findOne({ name, url });
+
+  if (existingPerson) {
+    res.status(409); // Conflict
+    throw new Error("Person with this name and URL already exists.");
+  }
+
   const people = await People.create({
     name,
     description,
