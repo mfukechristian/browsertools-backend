@@ -24,6 +24,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/people", peopleRoutes);
-app.use("/api/people/categories", peopleCategoryRoutes);
+app.use("/api/peopleCategories", peopleCategoryRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
