@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./config/dbConfig.js";
 import peopleRoutes from "./routes/peopleRoutes.js";
 import peopleCategoryRoutes from "./routes/peopleCategoryRoutes.js";
@@ -9,6 +10,9 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// CORS Middleware
+app.use(cors());
 
 // Middleware
 app.use(express.json());
@@ -20,6 +24,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/people", peopleRoutes);
-app.use("/api/categories", peopleCategoryRoutes);
+app.use("/api/people/categories", peopleCategoryRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

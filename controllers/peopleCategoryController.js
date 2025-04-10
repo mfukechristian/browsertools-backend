@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import PeopleCategory from "../models/peopleCategoryModel.js";
 
 // @desc    Create new category
-// @route   POST /api/categories
+// @route   POST /api/people/categories
 // @access  Public
 const createCategory = asyncHandler(async (req, res) => {
   const { category } = req.body;
@@ -30,7 +30,7 @@ const createCategory = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get all categories
-// @route   GET /api/categories
+// @route   GET /api/people/categories
 // @access  Public
 const getAllCategories = asyncHandler(async (req, res) => {
   const categories = await PeopleCategory.find({});
@@ -38,7 +38,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get single category by ID
-// @route   GET /api/categories/:id
+// @route   GET /api/people/categories/:id
 // @access  Public
 const getCategoryById = asyncHandler(async (req, res) => {
   const category = await PeopleCategory.findById(req.params.id);
@@ -52,7 +52,7 @@ const getCategoryById = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update category by ID
-// @route   PUT /api/categories/:id
+// @route   PUT /api/people/categories/:id
 // @access  Public
 const updateCategory = asyncHandler(async (req, res) => {
   const { category: newCategoryName } = req.body;
@@ -75,7 +75,7 @@ const updateCategory = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete category by ID
-// @route   DELETE /api/categories/:id
+// @route   DELETE /api/people/categories/:id
 // @access  Public
 const deleteCategory = asyncHandler(async (req, res) => {
   const category = await PeopleCategory.findById(req.params.id);
